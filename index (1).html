@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bir Yeni Mesaj 💌</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('https://i.pinimg.com/originals/0a/2e/d1/0a2ed147ddc264a6ac0c178f6f012c5f.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      background-color: rgba(255, 182, 193, 0.8);
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: #e91e63;
+    }
+    #message {
+      background: rgba(255, 255, 255, 0.85);
+      color: #e91e63;
+      padding: 20px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .yes { background-color: #ff69b4; color: white; }
+    .no { background-color: #e91e63; color: white; position: absolute; }
+    #result {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      color: #fff;
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 3s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { top: 0; left: -10px; }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Bir Yeni Mesaj</h1>
+  <div id="message">
+    <p>Şeyy...</p>
+    <p>"Bunu sana söylemek için doğru zamanı bekledim… Çünkü seninle her konuştuğumda, içimde bir şeyler değişti. Seni tanıdıkça, kelimeler daha anlamlı, günler daha güzel olmaya başladı.</p>
+    <p>Artık seninle sadece konuşmak değil, daha fazlasını yaşamak istiyorum. Eğer sen de istersen… benimle bir adım daha ileri gider misin? Benimle çıkar mısın?"</p>
+  </div>
+  <div>
+    <button class="yes" onclick="yes()">Evet 💖</button>
+    <button class="no" onclick="no()" id="noBtn">Hayır</button>
+  </div>
+  <div id="result"></div>
+  <script>
+    function yes() {
+      document.getElementById("result").innerHTML = "Ayyy kalbim eridi 😭💘 Artık birlikteyiz!";
+      document.querySelector("h1").innerText = "AŞK BAŞLADI 💞";
+      for (let i = 0; i < 50; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-20px";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 5000);
+      }
+    }
+    function no() {
+      const btn = document.getElementById("noBtn");
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+      alert("Hmm? Bu cevabı kabul etmiyorum 😈");
+    }
+  </script>
+</body>
+</html>
